@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg">
+<div class="dashboard">
+  <h2>Admin Dashboard</h2>
+  <div class="admin-controls">
+    <a href="{{ url_for('admin_download') }}"><button class="btn">⬇ Download CSV</button></a>
+    <form action="{{ url_for('clear_history') }}" method="post" style="display:inline;">
+      <button class="btn danger" type="submit">🗑 Clear History</button>
+    </form>
+    <a href="{{ url_for('logout') }}"><button class="btn">Logout</button></a>
+  </div>
+
+  <form method="get" action="{{ url_for('admin_dashboard') }}" class="search-form">
+    <input name="q" placeholder="Search username, message or response" value="{{ request.args.get('q','') }}">
+    <button type="submit">Search</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr><th>ID</th><th>User</th><th>Message</th><th>Response</th><th>Timestamp</th></tr>
+    </thead>
+    <tbody>
+      {% for c in chats %}
+      <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.user.username if c.user else 'Unknown' }}</td>
+        <td>{{ c.message }}</td>
+        <td>{{ c.response }}</td>
+        <td>{{ c.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

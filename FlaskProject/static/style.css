@@ -1,0 +1,81 @@
+/* static/style.css - professional theme */
+:root{
+  --brand:#2e7d32;
+  --brand-dark:#1b5e20;
+  --card-bg: rgba(255,255,255,0.95);
+  --muted:#6b7280;
+}
+
+body.bg{
+  background: url("/static/nano.jpg") center/cover no-repeat fixed;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  margin:0; padding:0; color:#111;
+}
+
+/* Cards */
+.auth-container, .chat-container, .dashboard {
+  width: 420px; max-width:95%;
+  margin: 64px auto;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(15,23,42,0.15);
+}
+
+/* Headings */
+.auth-container h2, .chat-container h2, .dashboard h2 {
+  color: var(--brand);
+  margin: 0 0 12px;
+  font-weight:600;
+}
+
+/* Inputs */
+input, select {
+  width: calc(100% - 24px);
+  padding: 10px 12px;
+  margin:8px 0;
+  border-radius:8px;
+  border:1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+button {
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+button:hover{ background: var(--brand-dark); }
+
+/* Flash */
+.flash { padding:10px; margin-bottom:10px; border-radius:8px; background:#fff3f2; color:#b91c1c; }
+
+/* Chat */
+.chat-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:12px }
+.chat-box{ height: 340px; overflow-y:auto; border-radius:8px; background:#f8fafc; padding:12px; border:1px solid #e6eef2; margin-bottom:12px }
+.user-msg{ text-align:right; color: #0b5cff; margin:8px 0; }
+.bot-msg{ text-align:left; color: #047857; margin:8px 0; }
+
+/* Admin table */
+table{ width:100%; border-collapse:collapse; margin-top:12px }
+th, td{ padding:8px; border:1px solid #e6eef2; font-size:13px }
+th{ background:var(--brand); color:#fff; }
+
+/* Controls */
+.admin-controls{ display:flex; gap:8px; justify-content:flex-end; margin-bottom:8px }
+.btn{ padding:8px 10px; border-radius:6px; border:none; background:#0ea5a4; color:#fff; cursor:pointer; }
+.btn.danger{ background:#ef4444; }
+
+/* Search */
+.search-form{ display:flex; gap:8px; margin:10px 0 }
+.search-form input{ flex:1 }
+
+/* Responsive */
+@media (max-width:500px){
+  .auth-container, .chat-container, .dashboard { margin: 16px; width: calc(100% - 32px) }
+  .chat-box{ height: 50vh }
+}
